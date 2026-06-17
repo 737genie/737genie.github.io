@@ -1,0 +1,38 @@
+:root {
+  /* Base */
+  --color-bg:        #ffffff;
+  --color-surface:   #f7f5ff;          /* 퍼플 틴트 서피스 */
+  --color-text:      #1a1a1a;
+  --color-text-sub:  #6b6b6b;
+  --color-border:    #ebe8f8;          /* 퍼플 틴트 보더 */
+
+  /* Primary accent — Hero 보라 팔레트 */
+  --color-accent:        #7b5bff;
+  --color-accent-2:      #a259ff;
+  --color-accent-pink:   #ff6fb5;
+  --color-accent-blue:   #0d99ff;
+  --color-accent-lime:   #c9f73e;
+  --color-accent-gold:   #ffc700;
+
+  /* Gradients */
+  --gradient-accent: linear-gradient(100deg, #7b5bff 0%, #a259ff 50%, #ff6fb5 100%);
+  --gradient-hero:   radial-gradient(1200px 600px at 50% -10%, #efeaff 0%, #f7f5ff 35%, #ffffff 75%);
+  --gradient-cta:    radial-gradient(900px 500px at 50% 110%, #efeaff 0%, #f7f5ff 40%, #ffffff 80%);
+
+  /* Typography */
+  --font-sans: 'Inter', 'Pretendard', -apple-system, sans-serif;
+  --fs-hero:  clamp(2.5rem, 7vw, 5.75rem);
+  --fs-h2:    clamp(1.75rem, 3vw, 2.75rem);
+  --fs-body:  1rem;
+
+  /* Radius & Shadow */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-card:  0 4px 24px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 12px 40px rgba(123, 91, 255, 0.18);
+  --shadow-glass: 0 8px 32px rgba(123, 91, 255, 0.08);
+
+  /* Spacing */
+  --space-section: clamp(5rem, 10vw, 9rem);
+}
