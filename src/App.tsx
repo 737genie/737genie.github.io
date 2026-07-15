@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './sections/Hero';
-import Marquee from './sections/Marquee';
+// import Marquee from './sections/Marquee';
 import About from './sections/About';
 import Education from './sections/Education';
 import Stack from './sections/Stack';
@@ -23,7 +23,7 @@ export default function App() {
       <Header />
       <main>
         <Hero onSearch={handleSearch} />
-        <Marquee />
+        {/* <Marquee /> */}
         <About />
         <Education />
         <Stack />

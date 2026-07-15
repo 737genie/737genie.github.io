@@ -174,7 +174,7 @@ function ProjectRow({ p, index, total }: { p: Project; index: number; total: num
           transition: 'color 0.15s',
         }}
       >
-        {expanded ? '접기' : '기능 · 트러블슈팅 보기'}
+        {expanded ? '접기' : '아키텍처 · 기능 · 트러블슈팅 보기'}
         <ChevronDown
           size={14}
           style={{ transform: expanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
@@ -192,6 +192,14 @@ function ProjectRow({ p, index, total }: { p: Project; index: number; total: num
             style={{ overflow: 'hidden' }}
           >
             <div style={{ paddingTop: '2rem' }}>
+              {p.architecture && (
+                <div style={{ marginBottom: '2.5rem' }}>
+                  <p style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-sub)', marginBottom: '0.75rem' }}>
+                    아키텍처
+                  </p>
+                  <ArchitectureDiagram arch={p.architecture} accent={p.accent} />
+                </div>
+              )}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                 <span style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-sub)' }}>
                   기능
@@ -337,3 +345,50 @@ function TroubleRow({ t, accent, isLast }: { t: Trouble; accent: string; isLast:
     </div>
   );
 }
+
+function ArchitectureDiagram({ arch, accent }: { arch: NonNullable<Project['architecture']>; accent: string }) {
+  const [zoomed, setZoomed] = useState(false);
+  const src = arch.src;
+
+  return (
+    <>
+      <button
+        onClick={() => setZoomed(true)}
+        style={{
+          display: 'block', width: '100%', padding: 0, cursor: 'zoom-in',
+          background: '#fafafa', border: '1px solid var(--color-border)',
+          borderRadius: '8px', overflow: 'hidden', fontFamily: 'var(--font-sans)',
+        }}
+      >
+        <img
+          src={src}
+          alt={arch.alt}
+          loading="lazy"
+          style={{ display: 'block', width: '100%', height: 'auto' }}
+        />
+      </button>
+      {arch.caption && (
+        <p style={{ fontSize: '0.72rem', color: 'var(--color-text-sub)', marginTop: '0.6rem', textAlign: 'center', lineHeight: 1.5 }}>
+          {arch.caption}
+        </p>
+      )}
+
+      <AnimatePresence>
+        {zoomed && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setZoomed(false)}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 100, cursor: 'zoom-out',
+              background: 'rgba(0,0,0,0.85)', display: 'flex',
+              alignItems: 'center', justifyContent: 'center', padding: '2rem',
+            }}
+          >
+            <img src={src} alt={arch.alt} style={{ maxWidth: '95%', maxHeight: '95%', objectFit: 'contain' }} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+

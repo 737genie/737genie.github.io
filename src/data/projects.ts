@@ -1,3 +1,6 @@
+import begaArch from '../assets/bega_diagram.png';
+import tripmoaArch from '../assets/tripmoa_diagram.png';
+
 export interface Feature {
   domain: string;
   title: string;
@@ -30,6 +33,11 @@ export interface Project {
   stack: Record<string, string[]>;
   features: Feature[];
   troubleshooting: Trouble[];
+  architecture?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  }
 }
 
 export const projects: Project[] = [
@@ -42,7 +50,7 @@ export const projects: Project[] = [
     oneLiner: 'AI 기반 여행 올인원 플랫폼',
     period: '2026.01 ~ 현재',
     team: '팀원 4명',
-    myRole: '메이트 매칭 · 실시간 채팅 · AI 자동 태그 · 신고 시스템',
+    myRole: 'API 28개 설계 · 담당 도메인 4개 · 실시간 기능 구현',
     highlights: [
       { label: '동행 매칭', sub: '여행 스타일 기반 메이트 매칭' },
       { label: '여행기 커뮤니티', sub: '여행 기록 공유, 좋아요, 댓글' },
@@ -105,6 +113,7 @@ export const projects: Project[] = [
         solution: 'ApplicationResponse DTO로 필요한 필드만 평탄화(flatten). DTO 계층에서 양방향 참조를 끊어 순환 제거',
       },
     ],
+    architecture: { src: tripmoaArch, alt: 'TripMoa 시스템 아키텍처' }
   },
   {
     id: 'bega',
@@ -115,7 +124,7 @@ export const projects: Project[] = [
     oneLiner: 'KBO 야구 팬을 위한 커뮤니티',
     period: '2025.11 ~ 2025.12',
     team: '팀원 5명',
-    myRole: 'AI agentic RAG 챗봇 구현 · 음성 인식 검색 시스템 · 야구 다이어리',
+    myRole: '핵심 API 14+ 설계 · AI agentic RAG 챗봇 구현 · 음성 인식 검색 시스템',
     highlights: [
       { label: '구장 가이드', sub: 'KBO 10개 구장 지도, 먹거리 정보' },
       { label: '야구 다이어리', sub: '경기 관람 기록, 사진, 통계' },
@@ -184,5 +193,6 @@ export const projects: Project[] = [
         solution: '재시도 로직(max_retries)으로 드라이버 자동 재시작. 배치 단위 분할 처리로 단일 실패가 전체 크롤링에 영향 주지 않도록 구조 개선',
       },
     ],
+    architecture: { src: begaArch, alt: 'BEGA 시스템 아키텍처' }
   },
 ];
