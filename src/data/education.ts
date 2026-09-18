@@ -1,5 +1,5 @@
 export interface EducationItem {
-  type: 'degree' | 'bootcamp';
+  type: 'degree' | 'bootcamp' | 'education';
   institution: string;
   major?: string;
   period: string;
@@ -26,6 +26,13 @@ export const educationItems: EducationItem[] = [
     institution: '이젠아카데미 종로점',
     major: '백엔드 부트캠프 6개월 과정',
     period: '2025.06 – 2025.12',
+    status: '수료',
+  },
+  {
+    type: 'education',
+    institution: 'LG AI 연구원',
+    major: 'LG Aimers 9기 & 해커톤',
+    period: '2026.06 – 2026.09',
     status: '수료',
   },
 ];

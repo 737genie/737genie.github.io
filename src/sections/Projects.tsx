@@ -197,7 +197,7 @@ function ProjectRow({ p, index, total }: { p: Project; index: number; total: num
                   <p style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-sub)', marginBottom: '0.75rem' }}>
                     아키텍처
                   </p>
-                  <ArchitectureDiagram arch={p.architecture} accent={p.accent} />
+                  <ArchitectureDiagram arch={p.architecture}/>
                 </div>
               )}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
@@ -346,7 +346,7 @@ function TroubleRow({ t, accent, isLast }: { t: Trouble; accent: string; isLast:
   );
 }
 
-function ArchitectureDiagram({ arch, accent }: { arch: NonNullable<Project['architecture']>; accent: string }) {
+function ArchitectureDiagram({ arch }: { arch: NonNullable<Project['architecture']>; }) {
   const [zoomed, setZoomed] = useState(false);
   const src = arch.src;
 
